@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice</title>
+  </head>
+  <body>
+    <div id="practiceDiv">
+      <input id="numbers" type="number">
+      <div id="numberBox">
+        <h2 id="display"></h2>
+      </div>
+    </div>
+  </body>
+
+  <script>
+  document.getElementById('numbers').addEventListener('change', function() {
+    console.log(this.value, 'value');
+    let num = this.value;
+    num = num * 3;
+
+    document.getElementById('display').innerHTML = num;
+  });
+
+  </script>
+</html>
