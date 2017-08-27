@@ -6,6 +6,8 @@ function greatestCommonDivisor(a, b) {
   let denominator = 2;
   let answer = 1;
 
+  if (a < 2 || b < 2) return 1;
+
   while (a >= denominator && b >= denominator) {
     if (a % denominator === 0 && b % denominator === 0) {
       answer = denominator;
