@@ -3,13 +3,15 @@
 let numbers = [2, 15, 73, 23, 36, 22, 1, 60, 86, 45];
 let newNumbers = [];
 
-// let reduced = numbers.reduce(function(a, b) {
-//     return a + b;
-//   }, 0);
-//
-// let filtered = numbers.filter(function(num) {
-//   return num < 20;
-// })
+let reduced = numbers.reduce(function(a, b) {
+    return a + b;
+  }, 0);
+
+let filtered = numbers.filter(function(num) {
+  return num < 20;
+}).reduce(function(a, b) {
+  return a + (b * 2);
+}, 0);
 
 let filter = function(array, cb) {
   array.forEach(function(num) {
@@ -25,11 +27,11 @@ function testing(number) {
   }
 }
 
-filter(numbers, testing);
-
-console.log(newNumbers);
-
-
-// console.log(filtered);
+// filter(numbers, testing);
 //
-// console.log(reduced);
+// console.log(newNumbers);
+
+
+console.log(filtered);
+
+console.log(reduced);
