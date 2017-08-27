@@ -8,6 +8,14 @@
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
+
+    <div id="practiceDiv">
+      <input id="numbers" type="number">
+      <div id="numberBox">
+        <h2 id="display"></h2>
+      </div>
+    </div>
+
     <!-- <script>
     document.getElementById('numbers').addEventListener('change', function() {
       console.log(this.value, 'value');
@@ -18,19 +26,12 @@
     });
 
     </script> -->
+
     <script>
       $('#numbers').on('change', function() {
-        console.log( $(this).text() );
-        // let num = $(this) * 3;
-        // $('#display').html($(this));
-      })
+        let num = $(this).val() * 3;
+        $('#display').html(num);
+      });
     </script>
-
-    <div id="practiceDiv">
-      <input id="numbers" type="number">
-      <div id="numberBox">
-        <h2 id="display"></h2>
-      </div>
-    </div>
   </body>
 </html>
