@@ -15,9 +15,10 @@ function greatestCommonDivisor(a, b) {
     denominator++;
   }
 
-  console.log(answer);
+  return answer;
 }
 
-greatestCommonDivisor(24, 36);
-greatestCommonDivisor(124, 245);
-greatestCommonDivisor(244, 424);
+console.log(greatestCommonDivisor(24, 36));
+console.log(greatestCommonDivisor(124, 245));
+console.log(greatestCommonDivisor(244, 424));
+console.log(greatestCommonDivisor(1, 8));

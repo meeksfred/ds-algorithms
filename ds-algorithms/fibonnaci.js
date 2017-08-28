@@ -11,10 +11,10 @@ function fibonnaci(n) {
     fib[i] = fib[i-2] + fib[i-1];
   }
 
-  // return fib[n];
-  console.log(fib[n]);
+  return fib[n];
 }
 
-fibonnaci(7);
-fibonnaci(3);
-fibonnaci(24);
+console.log(fibonnaci(7));
+console.log(fibonnaci(3));
+console.log(fibonnaci(24));
+console.log(fibonnaci(2));
