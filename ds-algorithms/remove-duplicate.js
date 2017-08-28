@@ -5,7 +5,7 @@
 function removeDuplicates(array) {
   let exists = {};
 
-  let filtered = array.filter(function(ele) {
+  let filtered = array.filter(ele => {
     if(!exists[ele]) {
       exists[ele] = true;
       return ele;
