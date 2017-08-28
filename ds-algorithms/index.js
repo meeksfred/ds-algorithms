@@ -33,5 +33,18 @@ function testing(number) {
 
 
 console.log(filtered);
-
 console.log(reduced);
+
+// Object.keys(obj) returns an array of the properties in the object.
+
+function keys(obj) {
+  let filtered = Object.keys(obj).filter(function(value) {
+    return obj[value] > 5;
+  }).map(function(val) {
+    return obj[val];
+  });
+
+  return filtered;
+}
+
+console.log(keys({a: 1, b: 2, c: 3, d: 4, e: 5, f: 6}));
