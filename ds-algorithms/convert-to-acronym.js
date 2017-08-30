@@ -17,3 +17,4 @@ function acronyms(string) {
 }
 
 console.log(acronyms('The Federal Bureau of Investigation'));
+console.log(acronyms('The Central Intelligence Agency'));
