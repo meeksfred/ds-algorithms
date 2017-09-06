@@ -16,6 +16,30 @@
       </div>
     </div>
 
+    <div id="header" name="header">
+      <ul>
+        <li>Baseball</li>
+        <li>Basketball</li>
+      </ul>
+    </div>
+    <input type="button" value="Click to add element" onclick="add_element()">
+    <input id="remove" type="button" value="Click to remove element" onclick="remove_element()">
+
+    <div>
+      <p> Maximum of 15 characters </p>
+      <input type="text" maxlength="15" placeholder="Say Hello...">
+      <p><span id="charNum"> 15 </span> characters left. </p>
+    </div>
+
+    <div id="notSelected">
+      <button type="button" onclick="moveBox(this)">1</button>
+      <button type="button" onclick="moveBox(this)">2</button>
+      <button type="button" onclick="moveBox(this)">3</button>
+    </div>
+
+    <div id="selected" style="background-color: yellow">
+    </div>
+
     <!-- <script>
     document.getElementById('numbers').addEventListener('change', function() {
       console.log(this.value, 'value');
@@ -28,10 +52,37 @@
     </script> -->
 
     <script>
+      function removeElement() {
+        if ($("#header ul").val().length > 3) {
+          $("#remove").show();
+        } else {
+          $("#remove").fadeOut(800);
+        }
+      }
+
+      function add_element() {
+        $("div[name=header] ul").append("<li>Soccer</li>");
+        removeElement();
+      }
+
+      function moveBox(element) {
+        if ($(element).parent().attr("id") === 'notSelected') {
+          $(element).detach().appendTo("#selected");
+        } else {
+          $(element).detach().appendTo("#notSelected");
+        }
+      }
+
       $('#numbers').on('change', function() {
         let num = $(this).val() * 3;
         $('#display').html(num);
       });
+
+      let maxLength = 15;
+      $("input[type=text]").keyup(function() {
+        let textLength = maxLength - $(this).val().length;
+        $("#charNum").text(textLength);
+      })
     </script>
   </body>
 </html>
