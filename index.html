@@ -2,6 +2,20 @@
 <html>
   <head>
     <title>Practice</title>
+    <style>
+      div {
+        padding: 5px;
+      }
+
+      #header ul li:hover {
+        color: Red;
+      }
+
+      table td:hover {
+        color: white;
+        background-color: black;
+      }
+    </style>
   </head>
   <body>
     <script
@@ -9,10 +23,14 @@
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
 
+    <button id="button1">Click to Count the # of elements on the page</button>
+
     <div id="practiceDiv">
       <input id="numbers" type="number">
       <div id="numberBox">
         <h2 id="display"></h2>
+      </div>
+      <div id="previousNum">
       </div>
     </div>
 
@@ -27,7 +45,7 @@
 
     <div>
       <p> Maximum of 15 characters </p>
-      <input type="text" maxlength="15" placeholder="Say Hello...">
+      <input type="text" maxlength="15" placeholder="Say Hello..." />
       <p><span id="charNum"> 15 </span> characters left. </p>
     </div>
 
@@ -39,6 +57,22 @@
 
     <div id="selected" style="background-color: yellow">
     </div>
+
+    <div>
+      <select id="colors">
+        <option value="Red">Red</option>
+        <option selected value="Blue">Blue</option>
+        <option value="Green">Green</option>
+      </select>
+      <button type="button" onclick="remove_options()">Remove all Options</button>
+    </div>
+
+    <table border="1">
+      <tr><td>TD #0</td><td>TD #1</td><td>TD #2</td></tr>
+      <tr><td>TD #3</td><td>TD #4</td><td>TD #5</td></tr>
+      <tr><td>TD #6</td><td>TD #7</td><td>TD #8</td></tr>
+    </table>
+    <input type="button" value="Click to remove TD past index 3" onclick="remove_rows()" />
 
     <!-- <script>
     document.getElementById('numbers').addEventListener('change', function() {
@@ -52,13 +86,47 @@
     </script> -->
 
     <script>
+
+      $('#button1').on('click', function() {
+        let eleCount = $('*').length;
+        $('body').prepend(`<h1>${eleCount} elements!</h1>`);
+      })
+
+      function remove_rows() {
+        $('table td:gt(3)').remove();
+      }
+
       function removeElement() {
-        if ($("#header ul").val().length > 3) {
-          $("#remove").show();
+        if ($("#header li").length > 3) {
+          $("#remove").fadeIn();
         } else {
-          $("#remove").fadeOut(800);
+          $("#remove").hide();
         }
       }
+
+      let myObj = {
+        c1: 'Black',
+        c2: 'Orange',
+        c3: 'Teal',
+      }
+
+
+      function remove_options() {
+        $('#colors').empty();
+        $('#colors').append('<option value="White" selected>White</option>');
+        $.each(myObj, function(key, value) {
+          $('#colors').append(`<option value=${value}>${value}</option>`);
+        });
+      }
+
+      // $.each(myObj, function(key, value) {
+      //   $('#colors').append($('<option></option>').val(value).html(value));
+      // });
+
+      $('#colors').on('change', function() {
+        $('#colors option:selected').prop('value', 'Nerp');
+        console.log($('#colors option:selected').prop('value'));
+      });
 
       function add_element() {
         $("div[name=header] ul").append("<li>Soccer</li>");
@@ -73,9 +141,18 @@
         }
       }
 
+
+      let myArr = [];
+
       $('#numbers').on('change', function() {
         let num = $(this).val() * 3;
+        myArr.push(num);
         $('#display').html(num);
+
+        $('#previousNum').empty();
+        $.each(myArr, function(i, n) { // (index, value)
+          $('#previousNum').append('<p style="display: inline; padding-left: 5px;">' + n + '</p>');
+        })
       });
 
       let maxLength = 15;
